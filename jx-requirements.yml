@@ -7,28 +7,46 @@ buildPacks:
     gitRef: master
     gitURL: https://github.com/jenkins-x/jxr-packs-kubernetes.git
 cluster:
-  clusterName: ""
-  devEnvApprovers:
-  - todo
-  environmentGitOwner: "todo"
+  clusterName: tf-jx-pumped-swan
+  environmentGitOwner: todo
   gitKind: github
   gitName: github
   gitServer: https://github.com
   namespace: jx
-  project:  ""
+  project: jenkins-x-labs-bdd
   provider: gke
   registry: gcr.io
-  zone: ""
+  vaultName: tf-jx-pumped-swan
+  vaultSAName: tf-jx-pumped-swan-vt
+  zone: us-central1-a
 environments:
-- key: dev
-  owner: ""
-  repository: ""
-- key: staging
-  owner: ""
-  repository: ""
-- key: production
-  owner: ""
-  repository: ""
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: dev
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: staging
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: production
 gitops: true
 ingress:
   domain: ""
@@ -37,7 +55,7 @@ ingress:
   tls:
     email: ""
     enabled: false
-    production: false
+    production: true
 kaniko: true
 repository: nexus
 secretStorage: vault
@@ -46,15 +64,20 @@ storage:
     enabled: false
     url: ""
   logs:
-    enabled: false
-    url: ""
+    enabled: true
+    url: gs://logs-tf-jx-pumped-swan-c6e3bace10e2
   reports:
-    enabled: false
-    url: ""
+    enabled: true
+    url: gs://reports-tf-jx-pumped-swan-c6e3bace10e2
   repository:
-    enabled: false
-    url: ""
-vault: {}
+    enabled: true
+    url: gs://repository-tf-jx-pumped-swan-c6e3bace10e2
+vault:
+  bucket: vault-tf-jx-pumped-swan-c6e3bace10e2
+  key: crypto-key-tf-jx-pumped-swan-c6e3bace10e2
+  keyring: keyring-tf-jx-pumped-swan-c6e3bace10e2
+  name: tf-jx-pumped-swan
+  serviceAccount: tf-jx-pumped-swan-vt
 velero:
   schedule: ""
   ttl: ""

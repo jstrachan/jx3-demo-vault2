@@ -1,7 +1,7 @@
 module "jx" {
   source = "jenkins-x/jx/google"
 
-  gcp_project = "<my-gcp-project-id>"
+  gcp_project = "jenkins-x-labs-bdd"
 }
 
 output "jx_requirements" {
