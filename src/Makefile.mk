@@ -1,6 +1,7 @@
 FETCH_DIR := build/base
 TMP_TEMPLATE_DIR := build/tmp
 OUTPUT_DIR := config-root
+VAULT_ADDR=https://vault.vault-infra:8200
 
 .PHONY: clean
 clean:
